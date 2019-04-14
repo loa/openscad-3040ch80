@@ -1,4 +1,4 @@
-module adapter_case(ux, uy, lx, ly, h, w){
+module adapter_case(ux, uy, lx, ly, h, w) {
     polyhedron(
         points=[
             // top outer

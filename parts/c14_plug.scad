@@ -1,7 +1,7 @@
-module c14_plug(){
+module c14_plug() {
   union() {
     translate([0, 0, 0])
-      cube([28, 8, 47], false);
+      cube([28, 11, 47], false);
 
     color("black")
     translate([-1, 1, 7+6+19])
