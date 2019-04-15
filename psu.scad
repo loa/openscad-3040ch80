@@ -4,7 +4,7 @@ use <parts/c14_plug.scad>;
 union() {
   color("green")
   difference() {
-    cube([170, 46, 2], false);
+    cube([170+56, 46, 2], false);
 
     translate([-2, 30, -2])
       cube([6+2, 16+2, 6], false);
@@ -18,16 +18,18 @@ union() {
 
     translate([32+(7/2), 35+(7/2), -2])
       cylinder(6, d=7, $fn=360);
-    translate([92+(7/2), 35+(7/2), -2])
+    translate([60+32+(7/2), 35+(7/2), -2])
       cylinder(6, d=7, $fn=360);
-    translate([152+(7/2), 35+(7/2), -2])
+    translate([2*60+32+(7/2), 35+(7/2), -2])
+      cylinder(6, d=7, $fn=360);
+    translate([3*60+32+(7/2), 35+(7/2), -2])
       cylinder(6, d=7, $fn=360);
   }
 
   color("yellow")
   difference() {
-    translate([168, 0, -98])
-      cube([2, 30, 100], false);
+    translate([168, -2, -98])
+      cube([2, 32, 100-34], false);
 
     translate([170, 15, -88])
     rotate(a=[0, 90, 0])
@@ -44,24 +46,37 @@ union() {
 
   color("blue")
   union() {
-    translate([170-24, -2, -98])
-      cube([2, 10, 95], false);
-    translate([170-48, -2, -98])
-      cube([26, 2, 97], false);
+    // horizontal wall
+    translate([170-22, -4, -98])
+      cube([2, 8, 95], false);
+    // outer wall
+    translate([170-38, -4, -100])
+      cube([38, 2, 102], false);
+    // top small gap fill
+    translate([170-38, -2, 0])
+      cube([38, 2, 2], false);
   }
 
   color("red")
-  translate([170-50, 0, -100])
-    cube([50, 30, 2], false);
-
-  color("orange")
   difference() {
-    translate([170, 0, -100])
-    rotate(a=[90, 0, 0])
-    mirror([1, 0, 0])
-      adapter_case(36, 56, 50, 102, 19+22, 2);
+    translate([170-38, -2, -100])
+      cube([38, 32, 2], false);
 
-    translate([138, -41, -(48+47)])
+    translate([170-38-8, 4, -101])
+      cube([38, 32, 4], false);
+  }
+
+  color("white")
+  difference() {
+    translate([170, -4, -34])
+      cube([56, 34, 36], false);
+
+    translate([170-2, -2, -32])
+      cube([56, 36, 32], false);
+
+    translate([170+((56-47)/2), -5, 2-(36-28)/2])
+    rotate(a=[0, 90, 0])
       c14_plug();
   }
+
 }
