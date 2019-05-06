@@ -4,7 +4,7 @@ use <parts/c14_plug.scad>;
 union() {
   color("green")
   difference() {
-    cube([170+56, 46, 2], false);
+    cube([170+62, 46, 2], false);
 
     translate([-2, 30, -2])
       cube([6+2, 16+2, 6], false);
@@ -27,54 +27,49 @@ union() {
   }
 
   color("yellow")
-  difference() {
-    translate([168, -2, -98])
-      cube([2, 32, 100-34], false);
-
-    translate([170, 15, -88])
-    rotate(a=[0, 90, 0])
-      cylinder(h=20, r=5, center=true);
-
-    translate([168, 15, -88])
-    rotate(a=[0, 90, 0])
-      cylinder(h=1, r1=6, r2=5, center=true);
-
-    translate([170, 15, -88])
-    rotate(a=[0, 90, 0])
-      cylinder(h=1, r1=5, r2=6, center=true);
-  }
+  translate([168, -2, -98])
+    cube([2, 32, 100-34], false);
 
   color("blue")
   union() {
     // horizontal wall
     translate([170-22, -4, -98])
       cube([2, 8, 95], false);
+    // top small gap fill
+    translate([0, -2, 0])
+      cube([170, 2, 2], false);
+    // top outer wall
+    translate([0, -4, -4])
+      cube([170, 2, 6], false);
     // outer wall
     translate([170-38, -4, -100])
       cube([38, 2, 102], false);
-    // top small gap fill
-    translate([170-38, -2, 0])
-      cube([38, 2, 2], false);
   }
 
-  color("red")
-  difference() {
+
+  color("green")
+  union() {
     translate([170-38, -2, -100])
       cube([38, 32, 2], false);
-
-    translate([170-38-8, 4, -101])
-      cube([38, 32, 4], false);
+    translate([170-38, 30, -100])
+      cube([38, 15, 4], false);
+    translate([170-38, 45, -100])
+      cube([38, 4, 8], false);
   }
 
   color("white")
   difference() {
     translate([170, -4, -34])
-      cube([56, 34, 36], false);
+      cube([62, 34, 36], false);
+
+    translate([228, 10, -26])
+      cube([6, 22, 20], false);
 
     translate([170-2, -2, -32])
-      cube([56, 36, 32], false);
+      cube([62, 36, 32], false);
 
-    translate([170+((56-47)/2), -5, 2-(36-28)/2])
+
+    translate([170+((62-47)/2), -5, 2-(36-28)/2])
     rotate(a=[0, 90, 0])
       c14_plug();
   }
