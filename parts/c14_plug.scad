@@ -4,21 +4,26 @@ module c14_plug() {
       cube([28, 11, 47], false);
 
     color("black")
-    translate([-1, 2, 7+6+19])
-      cube([2, 10, 8.5], false);
+    translate([-1, 2, 7 + 6 + 20])
+      cube([2, 10, 10], false);
 
     color("black")
-    translate([27, 2, 7+6+19])
-      cube([2, 10, 8.5], false);
+    translate([27, 2, 7 + 6 + 20])
+      cube([2, 10, 10], false);
 
     color("black")
     translate([-1, 2, 7])
-      cube([2, 10, 6], false);
+      cube([2, 10, 8], false);
 
     color("black")
     translate([27, 2, 7])
-      cube([2, 10, 6], false);
+      cube([2, 10, 8], false);
   }
 }
 
-c14_plug();
+rotate([90, 0, 0])
+difference() {
+  cube([60, 2, 60], false);
+  translate([17, -1, 6])
+    c14_plug();
+}
