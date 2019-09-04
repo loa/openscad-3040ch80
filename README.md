@@ -11,3 +11,7 @@
     ```
     ansible-playbook --inventory "cncjs.local," playbook.yaml
     ```
+1. Run ansible to install lcd drivers if MPI3501 is used
+    ```
+    ansible-playbook --inventory "cncjs.local," lcd-playbook.yaml
+    ```

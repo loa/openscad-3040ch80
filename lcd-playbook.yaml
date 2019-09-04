@@ -1,0 +1,16 @@
+---
+- hosts: all
+  remote_user: pi
+  become: true
+  tasks:
+  - name: fetch lcd driver
+    unarchive:
+      src: https://github.com/goodtft/LCD-show/archive/master.zip
+      dest: /root
+      remote_src: yes
+      creates: /root/LCD-show-master
+  - name: run lcd driver install (will reboot)
+    shell: /root/LCD-show-master/LCD35-show
+    args:
+      chdir: /root/LCD-show-master/
+      creates: /root/LCD-show-master/.have_installed
