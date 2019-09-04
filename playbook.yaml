@@ -1,0 +1,33 @@
+---
+- hosts: all
+  remote_user: pi
+  become: true
+  tasks:
+  - name: install nodejs and npm
+    package:
+      name:
+      - nodejs
+      - npm
+  - name: upgrade to latest npm
+    npm: name=npm@latest global=yes
+  - name: install cncjs
+    npm: name=cncjs global=yes unsafe_perm=yes
+  - name: create systemd unit file
+    copy:
+      dest: /etc/systemd/system/cncjs.service
+      content: |
+        [Unit]
+        Description=cncjs
+        After=network.target
+        [Service]
+        Type=simple
+        Environment=HOME=/root/
+        ExecStart=/usr/local/bin/cncjs --port 80 --controller Marlin
+        Restart=always
+        [Install]
+        WantedBy=multi-user.target
+  - name: enable service
+    systemd:
+      name: cncjs
+      state: started
+      enabled: yes
