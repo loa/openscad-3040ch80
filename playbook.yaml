@@ -12,6 +12,12 @@
     npm: name=npm@latest global=yes
   - name: install cncjs
     npm: name=cncjs global=yes unsafe_perm=yes
+  - name: fetch lcd cncjs-pendant-tinyweb
+    unarchive:
+      src: https://github.com/cncjs/cncjs-pendant-tinyweb/archive/720ee08d3302251ba93030e5770a6aea8aef1e23.zip
+      dest: /root
+      remote_src: yes
+      creates: /root/cncjs-pendant-tinyweb-720ee08d3302251ba93030e5770a6aea8aef1e23
   - name: create systemd unit file
     copy:
       dest: /etc/systemd/system/cncjs.service
@@ -22,7 +28,7 @@
         [Service]
         Type=simple
         Environment=HOME=/root/
-        ExecStart=/usr/local/bin/cncjs --port 80 --controller Marlin
+        ExecStart=/usr/local/bin/cncjs --port 80 --controller Marlin --mount /pendant:/root/cncjs-pendant-tinyweb-720ee08d3302251ba93030e5770a6aea8aef1e23/src
         Restart=always
         [Install]
         WantedBy=multi-user.target
