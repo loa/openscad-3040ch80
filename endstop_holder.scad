@@ -1,14 +1,11 @@
-module holder() {
-  switch_x = 9.65;
-  switch_y = 19.8;
-  switch_z = 6.8;
+module holder(switch_x, switch_y, switch_z) {
 
   difference() {
     cube([switch_x + 2, switch_y + 2, switch_z + 2], false);
 
     // cut top
-    translate([-1, 3, switch_z])
-      cube([switch_x + 2, switch_y - 4, 3], false);
+    translate([-1, 2, switch_z])
+      cube([switch_x + 2, switch_y - 2, 3], false);
 
     // cut lower back edge
     translate([-1, 1, 4])
@@ -30,4 +27,4 @@ module holder() {
 
 }
 
-holder();
+holder(9.65, 19.8, 6.8);
