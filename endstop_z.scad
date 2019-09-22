@@ -5,9 +5,10 @@ switch_y = 19.8;
 switch_z = 6.8;
 
 bracket_height = 12;
+holder_overhang = 12;
 
 color("green", 0.5)
-translate([-3, 0, 13])
+translate([-3, 0, holder_overhang])
 rotate([0, -90, 0])
   holder(switch_x, switch_y, switch_z);
 
@@ -26,10 +27,10 @@ difference() {
 
 color("purple", 0.5)
 hull() {
-  translate([-4, 2, 0])
-    cube([2, 26, bracket_height], false);
+  translate([-4, 0, 0])
+    cube([2, 28, bracket_height], false);
 
-  translate([-4, 0, 13 + switch_x])
+  translate([-4, 0, holder_overhang + switch_x])
     cube([2, switch_y + 2, 2], false);
 }
 
