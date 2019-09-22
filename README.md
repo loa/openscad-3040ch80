@@ -2,10 +2,15 @@
 
 ## Software
 
+1. Flash Raspbian with desktop
 1. [Setup a headless Raspberry Pi](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md)
 1. Update hostname to cncjs
     ```bash
-    raspi-config 
+    raspi-config
+    ```
+1. Setup boot options to "Desktop Autologin"
+    ```bash
+    raspi-config
     ```
 1. Run ansible to install cncjs
     ```

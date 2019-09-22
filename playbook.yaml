@@ -8,6 +8,7 @@
       name:
       - nodejs
       - npm
+      - unclutter
   - name: upgrade to latest npm
     npm: name=npm@latest global=yes
   - name: install cncjs
@@ -37,3 +38,17 @@
       name: cncjs
       state: started
       enabled: yes
+  - name: create chromium autostart
+    copy:
+      dest: /home/pi/.config/lxsession/LXDE-pi/autostart
+      content: |
+        @xscreensaver -no-splash
+        @xset s off
+        @xset -dpms
+        @xset s noblank
+        @unclutter -root &
+        @chromium-browser --kiosk http://localhost/pendant/
+  - name: disable raspbian welcome screen
+    file:
+      state: absent
+      path: /etc/xdg/autostart/piwiz.desktop
