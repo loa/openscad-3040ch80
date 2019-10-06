@@ -7,45 +7,44 @@ switch_z = 6.8;
 bracket_height = 12;
 holder_overhang = 20 - switch_x - 2;
 
-hole_z_spacing = 56;
-hole_y_spacing = 6;
-
 screw_z_diameter = 4;
 screw_x_diameter = 6;
 
 color("yellow", 0.5)
+translate([4, -2, 14 + switch_y])
+hull() {
+  cube([17, 2, 2], false);
+  translate([7, 0, 22])
+    cube([10, 2, 2], false);
+}
+
+color("red", 0.5)
+translate([4, -2, - 4 - screw_x_diameter])
+hull() {
+  cube([5, 2, 26 + switch_y], false);
+  translate([12, 0, 10])
+    cube([5, 2, 26 + switch_y - 10], false);
+}
+
+color("orange", 0.5)
 translate([0, -2, - 4 - screw_x_diameter])
-union() {
-  translate([4, 0, 36 + 1.5 * screw_x_diameter - 2])
-  hull() {
-    cube([17, 2, 2], false);
-    translate([7, 0, 22])
-      cube([10, 2, 2], false);
-  }
+hull() {
+  cube([1, 2, 4 + screw_x_diameter], false);
   translate([4, 0, 0])
-  hull() {
-    cube([5, 2, 26 + switch_y], false);
-    translate([12, 0, 10])
-      cube([5, 2, 26 + switch_y - 10], false);
-  }
-  hull() {
-    cube([1, 2, 4 + screw_x_diameter], false);
-    translate([4, 0, 0])
-      cube([1, 2, 4 + screw_x_diameter + 4], false);
-  }
+    cube([1, 2, 4 + screw_x_diameter + 4], false);
 }
 
 color("purple", 0.5)
 difference() {
-  translate([11, -2, hole_z_spacing])
+  translate([11, -2, 56])
   hull() {
-    cube([10, hole_y_spacing + 1.5 * screw_z_diameter, 2], false);
+    cube([10, 6 + 1.5 * screw_z_diameter, 2], false);
     translate([2, 0, 0])
-      cube([6, hole_y_spacing + 1.5 * screw_z_diameter + 2, 2], false);
+      cube([6, 6 + 1.5 * screw_z_diameter + 2, 2], false);
   }
 
   color("blue", 0.5)
-  translate([16, hole_y_spacing + screw_z_diameter / 2, hole_z_spacing - 2])
+  translate([16, 6 + screw_z_diameter / 2, 56 - 2])
     cylinder(6, d = screw_z_diameter, $fn = 36);
 }
 
