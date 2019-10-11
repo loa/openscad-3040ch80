@@ -1,4 +1,4 @@
-use <endstop_holder.scad>;
+use <parts/endstop_holder.scad>;
 
 switch_x = 9.65;
 switch_y = 19.8;
